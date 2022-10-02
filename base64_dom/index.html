@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+        <title>Base64 Converter</title>
+    </head>
+    <body>
+        <h1 class="rt" style="font-family: Audiowide, sans-serif" >Base64 Converter</h1>
+        <div class="main">
+            <div class="encode">
+                <center>
+                <h1 style="font-family: Courier New", monospace;> <u>ENCODER</u></h1>
+                </center>
+            </div>
+            <div class="encode1">
+                <label>Enter a string here : </label>
+                <input type="text" name="char" id="encodeinput"/>
+                <button class="button button1" onclick="Base64Encoding()">Encode</button>
+            </div>
+            <div class="encode2">
+                <label>output:-</label><br>
+                <center>
+                <textarea id="encodeoutput" name="encodeoutput" rows="4" cols="50" placeholder="Encoded Output"></textarea>
+            </center>
+                <!-- <h1 id="EnOutput"></h1> -->
+            </div>
+            <div class="decode">
+                <center>
+                <h1 style="font-family: Courier New", monospace;> <u>DECODER</u></h1>
+                </center>
+            </div>
+            <div class="decode1">
+                <label>Enter a string here : </label>
+                <input type="text" name="char" id="decodeinput"/>
+                <button class="button button2" onclick="Base64Decoding()">Decode</button>
+            </div>
+            <div class="decode2">
+                <label>output:-</label><br>
+                <center>
+                <textarea id="decodeoutput" name="decodeoutput" rows="4" cols="50" placeholder="Decoded Output"></textarea>
+            </center>
+                <!-- <h1 id="DeOutput"></h1> -->
+            </div>
+        </div>
+    </body>
+    <script src="encoder.js"></script>
+    <script src="decoder.js"></script>
+</html>

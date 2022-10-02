@@ -1,0 +1,2 @@
+const newWinners = [];
+const temp = [];

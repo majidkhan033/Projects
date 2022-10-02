@@ -1,0 +1,25 @@
+body{
+    background-color: black;
+    color: azure;
+}
+
+table{
+    border: 4px solid rebeccapurple;
+    margin: 5px;
+}
+
+td{
+    border: 2px solid rebeccapurple;
+    height: 55px;
+    width: 55px;
+    font-size: x-large;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px){
+    td{
+        height: 30px;
+        width: 30px;
+        font-size: large;
+    }
+}

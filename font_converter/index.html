@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Font Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Alumni+Sans+Pinstripe&family=Comfortaa&family=Dancing+Script&family=Noto+Serif+JP&family=Qwitcher+Grypen&family=Roboto+Mono:wght@100&family=Rubik+Dirt&family=Silkscreen&family=Teko&display=swap');      @font-face {
+        font-family: unsteady-oversteer;
+        src: url(./unsteady\ oversteer.ttf);
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="font-family: Audiowide, sans-serif" >Font Converter</h1>
+      <form onsubmit="changeFont(event)">
+        <p><label for="headlable" style="font-family: Audiowide, sans-serif">Enter your Text Here : </label></p>
+        <textarea
+          id="textinput"
+          name="textinput"
+          rows="4"
+          cols="50"
+          placeholder="Enter Text Here"
+        ></textarea
+        ><br />
+        <label for="cars" style="font-size: large;">Choose a Font Family : </label>
+
+        <select name="fonts" id="fonts">
+          <option value="unsteady-oversteer">Unsteady Oversteer</option>
+                <option value=" 'Qwitcher Grypen', cursive">Qwitcher Grypen</option>
+                <option value="'Alumni Sans Pinstripe', sans-serif">Alumni Sans Pinstripe</option>
+                <option value="'Aboreto', cursive">Aboreto</option>
+                <option value="'Roboto Mono', monospace">Roboto Mono</option>
+                <option value="'Silkscreen', cursive">Silkscreen</option>
+                <option value="'Comfortaa', cursive">Comfortaa</option>
+                <option value=" 'Noto Serif JP', serif">Noto Serif Japanese</option>
+                <option value="'Teko', sans-serif">Teko</option>
+                <option value=" 'Dancing Script', cursive">Dancing Script</option>
+                <option value="'Rubik Dirt', cursive">Rubik Dirt</option></select>
+                <br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      <br /><br />
+      <textarea id="newtext"></textarea>
+    </div>
+    <footer>
+      <a href="https://codeforindia.com" target="_blank">Code For India</a
+      ><br />
+      &copy; Copyrights. All Rights Reserved
+      <!-- <script>
+        document.write(new Date().getFullYear());
+      </script> -->
+      <span id="date"> </span>
+    </footer>
+  </body>
+  <script>
+    document.getElementById("date").innerText = new Date().getFullYear();
+    function changeFont(event) {
+      //Prevents the page from Reloading
+      event.preventDefault();
+
+      //Getting Input from User Text Area
+      let text = document.getElementById("textinput").value;
+      console.log(text);
+
+      //Getting Font Name form Select Drop Down Menu
+      let fontname = document.getElementById("fonts").value;
+      console.log(fontname);
+
+      //This is the Element that has the Output Text Area
+      let formattedText = document.getElementById("newtext");
+
+      console.log(formattedText);
+      //Changing Text of Output Text Area
+      formattedText.innerText = text;
+
+      //adding a font Style for the Output Text Area Tag
+      formattedText.style.fontFamily = fontname;
+    }
+  </script>
+</html>
