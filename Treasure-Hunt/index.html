@@ -24,10 +24,11 @@
     </center>
   </body>
   <script>
-    if (!localStorage.getItem("winners")){
-      localStorage.getItem("winners",JSON.stringify([]))
-
+    if (!localStorage.getItem("winner")){
+      localStorage.setItem("winner",JSON.stringify([]))
+      console.log(localStorage.getItem("winner"));
     }
+
     let attempt = 0;
     // const audio = new Audio("audio.mp3");
     // audio.play()
@@ -42,12 +43,14 @@
       document.getElementById("player-name").innerText = username;
       //Generate TableData from 1 to 100
       const tableData = [];
+
       for (let i = 1; i <= 100; i++) {
         //Push Elements 1 to 100
         tableData.push(i);
       }
       console.log(tableData);
       tableData.sort(() => Math.random() - 0.5);
+
       //Access Table Tag
       let table = document.getElementById("my-game");
       let row,
@@ -65,15 +68,35 @@
           col.id = tableData[counter];
           //Add Inner Text from Table Data
           // col.innerText = tableData[counter];
+
           col.addEventListener("click", function (event) {
             // console.log(event.target.id);
             let clickedNumber = event.target.id;
             console.log(clickedNumber);
             if (clickedNumber == 1) {
+              //Play winning sound
               var audio = document.getElementById("winner_audio");
                   audio.play();
-              alert("You are a Winner, Congratulations!!!!");
-              location.reload("/");
+              //Winner Data
+              let winnerData = { playerName : username, attempts : attempt + 1};
+              // Get from Local Storage
+              let winners = JSON.parse(localStorage.getItem("winner"));
+              // Flat it
+              winners = winners.flat();
+              // Push the new Winners
+              winners.push(winnerData);
+              // Call Ranking Function
+              winners = ranking(winners);
+
+              //Set New Winner Data in Loacl Storage
+              localStorage.setItem("winner", JSON.stringify(winners));
+              // location.reload("/"leaderboard.html);
+
+              // Show Alert
+              alert(`You are a Winner, Congratulations!!!! You took ${attempt + 1} attempts to win.`);
+
+              //Redirect to Leaderboard
+              location.replace("/leaderboard.html")
             } else if (primesArray.includes(+clickedNumber)) {
               var audio = document.getElementById("looser_audio");
                   audio.play();
@@ -108,6 +131,35 @@
     }
     //Invoke the Function
     main();
+
+    function ranking(winnerData){
+      //New Winners
+      let newWinners = [];
+      //Array to store Elements with Same attempts
+      let temp = [];
+      // Convert 2D to 1D
+      // winnerData = winnerData.flat();
+
+      //Sort by Number of Attempts
+      winnerData.sort((a, b) => a.attempts - b.attempts);
+      // Give Initialise Rank 1
+      temp[0] = winnerData[0];
+
+      // Loop to Handle 2 Winners with same number of Attempts
+      for (let i = 1; i < winnerData.length; i++){
+        if (winnerData[i].attempts == winnerData[i-1].attempts) {
+          temp.push(winnerData[i]);
+        }
+        else {
+          newWinners.push(temp);
+          temp = [];
+          temp.push(winnerData[i]);
+        }
+      }
+      newWinners.push(temp);
+      return newWinners;
+    }
+
   </script>
 </html>
 

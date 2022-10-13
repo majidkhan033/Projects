@@ -1,12 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
-</head>
-<body>
-    <h1>leaderBoard</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeaderBoard</title>
+    <style>
+      body {
+        margin-top: 3%;
+        background-color: #141414;
+        color: #61dafb;
+        padding: 20px;
+      }
+
+      table {
+        border: 4px solid #61dafb;
+        margin-top: 5px;
+      }
+
+      td {
+        border: 2px solid #61dafb;
+        height: 55px;
+        width: 155px;
+        text-align: center;
+        font-size: larger;
+        font-weight: 500;
+      }
+
+      thead {
+        border: 2px solid #61dafb;
+        color: black;
+        font-size: large;
+        font-weight: 800;
+        height: 55px;
+        width: 155px;
+        text-align: center;
+        background-color: #ffffff;
+      }
+
+      h1 {
+        color: palegreen;
+      }
+
+      @media only screen and (max-width: 600px) {
+        td {
+          height: 30px;
+          width: 30px;
+          font-size: large;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <h1>Treasure Hunt Leader Board</h1>
+      <table id="leaderboard">
+        <thead>
+          <th>Rank</th>
+          <th>Attempts</th>
+          <th>Player Names</th>
+        </thead>
+        <tbody id="my-board"></tbody>
+      </table>
+    </center>
+  </body>
+  <script>
+    let winnerData = JSON.parse(localStorage.getItem("winner"));
+    let myboard = document.getElementById("my-board");
+    let row, col;
+    for (let i = 0; i < 3; i++) {
+      row = document.createElement("tr");
+      for (let j = 0; j < 3; j++) {
+        col = document.createElement("td");
+        console.log(col);
+        console.log(j);
+        if (j == 0) {
+          col.innerText = i + 1;
+        }
+        if (j == 1) {
+          col.innerText = winnerData[i][0].attempts;
+        }
+        if (j == 2) {
+          let str = "";
+          winnerData[i].forEach((ele) => {
+            str += ele.playerName;
+            col.innerText = str;
+            str += " , ";
+          });
+        }
+        row.appendChild(col);
+      }
+      myboard.appendChild(row);
+    }
+  </script>
 </html>

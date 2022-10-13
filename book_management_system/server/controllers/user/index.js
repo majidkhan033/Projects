@@ -45,6 +45,9 @@ router.post("/register", userRegisterValidatorRules(), errorMiddleware, async (r
             return res.status(409).json({ "error": "Email Already Registered" })
         }
         userData = await Admin.findOne({ email });
+        if (userData) {
+            return res.status(409).json({ "error" : "Email Already Registered"})
+        }
 
         req.body.password = await bcrypt.hash(password, 12);
         console.log(req.body);
