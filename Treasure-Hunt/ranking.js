@@ -46,8 +46,8 @@ winnerData = winnerData.flat();
 winnerData.sort((a, b) => a.attempts - b.attempts);
 temp[0] = winnerData[0];
 // console.log(winnerData);
-// let i;
-for (let i = 1; i < winnerData.length; i++) {
+let i;
+for ( i = 1; i < winnerData.length; i++) {
     if (winnerData[i].attempts == winnerData[i - 1].attempts) {
         temp.push(winnerData[i]);
     } else {
