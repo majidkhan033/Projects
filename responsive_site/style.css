@@ -117,7 +117,7 @@ img {
   content:  '';
   position: absolute;
   height: 100px;
-  bottom: -65px;
+  bottom: -65px; 
   right: 0;
   left: 0;
   background: red;
@@ -132,3 +132,33 @@ img {
   padding-top: 100px;
 }
 
+.stats-heading {
+  max-width: 500px;
+  margin : auto;
+}
+
+.stats .grid h3 {
+  font-size: 35px;
+}
+
+.stats .grid p {
+  font-size: 20px;
+  font-weight: bold ;
+}
+
+
+/* CLI */
+.cli .grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.cli .grid > *:first-child {
+  grid-column: 1 / span 2;
+  grid-row : 1 / span 2; 
+}
+
+/* Cloud */
+.cloud .grid {
+  grid-template-columns: 4fr 3fr;
+}
