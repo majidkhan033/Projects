@@ -9,6 +9,8 @@
         <title>Base64 Converter</title>
     </head>
     <body>
+        <script src="encoder.js"></script>
+        <script src="decoder.js"></script>
         <h1 class="rt" style="font-family: Audiowide, sans-serif" >Base64 Converter</h1>
         <div class="main">
             <div class="encode">
@@ -36,7 +38,7 @@
             <div class="decode1">
                 <label>Enter a string here : </label>
                 <input type="text" name="char" id="decodeinput"/>
-                <button class="button button2" onclick="Base64Decoding()">Decode</button>
+                <button class="button button2" onclick="base64Decoding()">Decode</button>
             </div>
             <div class="decode2">
                 <label>output:-</label><br>
@@ -47,6 +49,5 @@
             </div>
         </div>
     </body>
-    <script src="encoder.js"></script>
-    <script src="decoder.js"></script>
+
 </html>

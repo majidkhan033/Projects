@@ -63,7 +63,7 @@ function base64Decoding(){
 
     // base64Decoding();
 
-// export default base64Decoding
+export default base64Decoding;
 
 
 
